@@ -18,7 +18,7 @@ export default {
   data () {
     return {
       input: '',
-      dests: ['Bandarban', 'Bandarban, Keokradong', 'Sylhet']
+      dests: ['Bandarban', 'Rajshahi', 'Sylhet', 'Saint Martin', 'Sundarban']
     }
   },
   methods: {

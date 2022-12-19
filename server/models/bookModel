@@ -1,0 +1,14 @@
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
+const uuid = require('uuid')
+
+const bookPackageInfo = new Schema({
+    packageName: String,
+    firstName: String,
+    lastName: String,
+    numOfPeople: String,
+    email: String,
+    phone: String
+}, {collection: 'bookPackageInfo'})
+
+module.exports = mongoose.model('bookPackageInfo', bookPackageInfo)

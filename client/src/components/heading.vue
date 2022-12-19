@@ -102,6 +102,7 @@ export default {
       try {
         axios.post('http://localhost:8081/logout/log-out')
         this.success = false
+        this.$router.push('/')
         this.$router.go()
       } catch (error) {
         console.error(error)

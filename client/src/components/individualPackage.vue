@@ -28,8 +28,8 @@
             </div>
           </div>
           <div class="btn" style="float: right">
-            <button v-on:click=fillupForm(items.packageId) class="btn btn-primary w-auto me-2">
-              Book this Tour
+            <button v-on:click="fillupForm($event, items.packageId)" class="btn btn-primary w-auto me-2">
+              Book {{items.namOfPlace}}
             </button>
             <div class="form">
             <fillform id="new-form" style="display: none; justify-content: center;"/>
@@ -49,7 +49,14 @@ export default {
   data () {
     return {
       isActive: false,
-      packages: []
+      packages: [],
+      name: '',
+      result: '',
+      firstName: '',
+      lastName: '',
+      number: '',
+      email: '',
+      phone: ''
     }
   },
   mounted () {
@@ -66,6 +73,25 @@ export default {
       if (event) {
         document.getElementById('new-form').style.display = 'flex'
         this.isActive = !this.isActive
+        console.log(event.target.innerHTML)
+        this.name = event.target.innerHTML
+        this.result = this.name.replace('Book', '')
+        console.log(this.result)
+
+        axios.post('', {
+          packageName: this.result,
+          firstName: this.firstName,
+          lastName: this.lastName,
+          numOfPeople: this.number,
+          email: this.email,
+          phone: this.phone
+        })
+          .then((response) => {
+            this.bookInfo = response.data
+          })
+          .catch((err) => {
+            console.log(err)
+          })
       }
       if (this.isActive === false) {
         document.getElementById('new-form').style.display = 'none'

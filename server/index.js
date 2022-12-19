@@ -24,6 +24,7 @@ app.use('/leave-a-review', require('./routes/api/createReview'))
 app.use('/register', require('./routes/api/registerUser'))
 app.use('/login', require('./routes/api/loginUser'))
 app.use('/logout', require('./routes/api/logOut'))
+app.use('/book-package', require('./routes/api/bookTourPackage'))
 
 mongoose.connect(
     process.env.DB_CONNECT_STRING, 
